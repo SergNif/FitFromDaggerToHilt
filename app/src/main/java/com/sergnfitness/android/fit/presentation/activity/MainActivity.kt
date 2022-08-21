@@ -2,19 +2,22 @@ package com.sergnfitness.android.fit.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.sergnfitness.android.fit.app.App
 import com.sergnfitness.android.fit.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 //    git push -f origin main
     //    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
 
-    @Inject
-    lateinit var vmFactory: MainViewModelFactory
+
+//    lateinit var vmFactory: MainViewModelFactory
     lateinit var binding: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        (applicationContext as App).appComponent.inject(this)
-
-        viewModel = ViewModelProvider(this,vmFactory).get(MainViewModel::class.java)
+//        (applicationContext as App).appComponent.inject(this)
+//
+//        viewModel = ViewModelProvider(this,vmFactory).get(MainViewModel::class.java)
 
 
 //        val logFragment: LoginFragment = LoginFragment()

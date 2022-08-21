@@ -5,17 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.sergnfitness.android.fit.R
-import com.sergnfitness.android.fit.app.App
 import com.sergnfitness.android.fit.databinding.Pg1FragmentMaFemale1Binding
 
 
 import com.sergnfitness.android.fit.presentation.controlUI.ChangeFonButtonPage5
 import com.sergnfitness.android.fit.presentation.controlUI.ChangeFonButtonPage5NoPress
 import com.sergnfitness.android.fit.presentation.viewModelPart1.Pg1MaleFemaleViewModel
-import com.sergnfitness.android.fit.presentation.viewModelPart1.Pg1MaleFemaleViewModelFactory
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,6 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Pg1MaleFemale.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class Pg1MaleFemale : Fragment() {
 
     // TODO: Rename and change types of parameters
@@ -37,9 +36,10 @@ class Pg1MaleFemale : Fragment() {
     val TAG = "Fragment Page1 MaFemale1 "
     lateinit var binding: Pg1FragmentMaFemale1Binding
 
-    @Inject
-    lateinit var vmFactory: Pg1MaleFemaleViewModelFactory
-    lateinit var viewModel: Pg1MaleFemaleViewModel
+
+//    lateinit var vmFactory: Pg1MaleFemaleViewModelFactory
+//    lateinit var viewModel: Pg1MaleFemaleViewModel
+    private val viewModel: Pg1MaleFemaleViewModel by viewModels()
 
 //    lateinit var viewModelFactory: Pg1MaleFemaleViewModelFactory
     val changeFonButtonPage5 = ChangeFonButtonPage5()
@@ -67,9 +67,9 @@ class Pg1MaleFemale : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = Pg1FragmentMaFemale1Binding.bind(view)
 
-        (requireActivity().applicationContext as App).appComponent.inject(this)
+//        (requireActivity().applicationContext as App).appComponent.inject(this)
 
-        viewModel = ViewModelProvider(this, vmFactory)[Pg1MaleFemaleViewModel::class.java]
+//        viewModel = ViewModelProvider(this, vmFactory)[Pg1MaleFemaleViewModel::class.java]
 
         viewModel.resultLive.observe(viewLifecycleOwner) {
             binding.textPage1.text = it

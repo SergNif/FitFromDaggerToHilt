@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.sergnfitness.domain.models.user.User
 import com.sergnfitness.domain.usecase.GetUserSharedPreferenceUseCase
 import com.sergnfitness.domain.usecase.SaveUserSharedPreferenceUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class Pg1MaleFemaleViewModel(
+@HiltViewModel
+class Pg1MaleFemaleViewModel @Inject constructor(
     private val getUserSharedPreferenceUseCase: GetUserSharedPreferenceUseCase,
     private val saveUserSharedPreferenceUseCase: SaveUserSharedPreferenceUseCase,
 ): ViewModel() {

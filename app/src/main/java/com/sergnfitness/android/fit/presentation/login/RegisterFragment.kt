@@ -6,25 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.sergnfitness.android.fit.R
 import com.sergnfitness.android.fit.databinding.FragmentRegisterBinding
-//import androidx.navigation.fragment.findNavController
-//import com.bignerdranch.android.finnesretrofitmvvm.R
-//import com.bignerdranch.android.finnesretrofitmvvm.databinding.FragmentRegisterBinding
-//import com.bignerdranch.android.finnesretrofitmvvm.domain.models.user.User
-//import com.bignerdranch.android.finnesretrofitmvvm.presentation.fragments.MainActivity
-//import com.bignerdranch.android.finnesretrofitmvvm.presentation.fragments.MainViewModel
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.FirebaseUser
-//import com.google.firebase.database.DatabaseReference
-//import com.google.firebase.database.FirebaseDatabase
+import dagger.hilt.android.AndroidEntryPoint
 
-import com.sergnfitness.android.fit.presentation.activity.MainActivity
-import com.sergnfitness.android.fit.presentation.activity.MainViewModel
-
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
     //    lateinit var sharedPrefUserStorage: SharedPrefUserStorage
-    lateinit var viewModel: MainViewModel
+//    lateinit var viewModel: MainViewModel
+    private val viewModel: RegisterFragmentViewModel by viewModels()
     val TAG = "Fragment Registr"
 
     private lateinit var binding: FragmentRegisterBinding
@@ -40,7 +31,8 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
+//        viewModel = (activity as MainActivity).viewModel
+
         binding = FragmentRegisterBinding.bind(view)
 
 //        viewModel.registrOrLogin.value = "registr"
